@@ -90,8 +90,8 @@ const CrearGrupo = ({ onSave, grupo }) => {
             value={newGroup.title}
             onChange={handleOnChange}
             pattern="\d*"
-            maxlength="5"
-            minlength="5"
+            maxLength="5"
+            minLength="5"
             required
           />
         </div>
@@ -137,8 +137,8 @@ const CrearGrupo = ({ onSave, grupo }) => {
             value={newGroup.title}
             onChange={handleOnChange}
             pattern="\d*"
-            maxlength="10"
-            minlength="10"
+            maxLength="10"
+            minLength="10"
           />
         </div>
         <div className="input-field">
