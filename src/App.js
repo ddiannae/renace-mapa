@@ -48,7 +48,6 @@ function App() {
     <div className="App">
       <Routes>
         <Route index element={<MapaPage allGrupos={allGrupos}/>} />
-        <Route path="*" element={<NotFoundPage />} />
         <Route path="listar-grupos" 
               element={<ListarGruposPage grupos={allGrupos} />} 
         />
@@ -60,6 +59,7 @@ function App() {
           path="editar-grupo/:grupoId"
           element={<EditarGrupoPage onSave={handleOnEdit} removeGroup={removeGroup}/>}
         />
+         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   );
