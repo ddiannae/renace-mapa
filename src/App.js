@@ -3,58 +3,63 @@ import './App.css';
 import React, { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
-import NavBar from "./components/NavBar";
-import { HomePage } from "./pages/HomePage";
+import { MapaPage } from "./pages/MapaPage";
 import {NotFoundPage} from "./pages/NotFoundPage"
 import { CreateGrupoPage } from "./pages/CreateGrupoPage";
-import { createGrupo, getAllGrupos } from './api/apiGrupo';
+import {ListarGruposPage} from "./pages/ListarGruposPage";
+import { createGrupo, getAllGrupos, updateGrupo } from './api/apiGrupo';
+import { EditarGrupoPage } from './pages/EditarGrupoPage';
 
 function App() {
 
   const navigate = useNavigate();
   const [allGrupos, setAllGrupos] = useState([]);
-
+  
   useEffect(() => {
     fetchGrupos();
   }, []);
-
 
   const fetchGrupos = async () => {
     const res = await getAllGrupos();
     setAllGrupos(res);
   };
 
+  const handleOnEdit = async (groupoId, grupo) => {
+    const res = await updateGrupo(groupoId, grupo);
+    const copyOfGroups = allGrupos.map((item) =>
+      item._id === res._id ? grupo : item
+    );
+    setAllGrupos(copyOfGroups);
+    navigate("/listar-grupos", {replace: true});
+  };
+
   const handleOnSave = async (grupo) => {
     const savedGrupo = await createGrupo(grupo);
     if (savedGrupo) setAllGrupos([...allGrupos, savedGrupo]);
-    navigate("/", { replace: true });
+    navigate("/crear-grupo", {state:"",  replace: true });
   };
+
+  const removeGroup = (id) => {
+    const copyOfGroups = allGrupos.filter((item) => item._id !== id);
+    setAllGrupos(copyOfGroups);
+  }
 
   return (
     <div className="App">
-      <NavBar />
       <Routes>
-        <Route index element={<HomePage allGrupos={allGrupos}/>} />
+        <Route index element={<MapaPage allGrupos={allGrupos}/>} />
         <Route path="*" element={<NotFoundPage />} />
+        <Route path="listar-grupos" 
+              element={<ListarGruposPage grupos={allGrupos} />} 
+        />
         <Route
           path="crear-grupo"
           element={<CreateGrupoPage onSave={handleOnSave} />}
         /> 
-        {/* <Route index element={<HomePage allPosts={allPosts} />} />
         <Route
-          path="create-post"
-          element={<CreatePostPage onSave={handleOnSave} />}
-        /> 
-        <Route
-          path="create-post/:postId"
-          element={<CreatePostPage onSave={handleOnEdit} />}
+          path="editar-grupo/:grupoId"
+          element={<EditarGrupoPage onSave={handleOnEdit} removeGroup={removeGroup}/>}
         />
-        <Route
-          path="post/:postId"
-          element={<DetailPostPage onDelete={handleOnDelete} />}
-        />
-        <Route path="*" element={<NotFoundPage />} />
-        */}
       </Routes>
     </div>
   );

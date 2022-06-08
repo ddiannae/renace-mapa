@@ -1,48 +1,58 @@
 @import "./constants.css";
-
-
-.container {
-  display: flex;
-  justify-content: center;
-  background-color: var(--gray-medium-color)
+* {
+  box-sizing: border-box;
 }
 
 .post-form {
-  position: sticky;
   margin-top: 40px;
   margin-bottom: 40px;
   padding: 16px;
-  min-width: 50%;
+  width: 60%;
   background-color: var(--white-color);
   border-radius: 6px;
 }
 
-.input-field {
+.post-form p {
+  text-align: left;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  justify-content: center;
   display: flex;
-  flex-direction: column;
-  margin-bottom: 16px;
 }
 
-.input-field label {
-  color: var(--green-medium-color);
-  margin-bottom: 12px;
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
-.input-field input {
-  border-radius: 4px;
-  border-width: 1px;
-  min-height: 45px;
-  font-size: medium;
-  padding-left: 6px;
-  padding-right: 6px;
+.row .input-field{
+  flex: 50%;
+  text-align: left;
+  padding: 0 8px;
 }
 
-.input-field textarea {
-  border-radius: 4px;
-  border-width: 1px;
-  min-height: 45px;
-  font-size: large;
-  padding: 8px;
+.row.half {
+  width: 50%;
+}
+
+.post-form h2 {
+  font-size: 1.25rem !important;
+}
+
+input[type=text], input[type=email], input[type=number], select{
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #fff;
 }
 
 .buttons-container {
@@ -51,19 +61,70 @@
   margin: 16px;
 }
 
-.buttons-container button {
-    height: 40px;
-    width: 140px;
-    padding: 10px;
-    color: white;
-    font-size: medium;
-    background-color: var(--green-medium-color);
-    border-radius: 6px;
-    border-width: 0px;
-    margin-left: 16px;
-    opacity: .85;
+.buttons-container button, .buttons-container a {
+  display: block;
+  background-color: #1B2631;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  line-height: 25px;
+  font-size: medium;
+  text-decoration: none;
+  margin: 0px 10px;
+  border: 0px solid transparent;
 }
 
-.buttons-container button:hover {
+.buttons-container button:hover, .buttons-container a:hover {
   opacity: 1;
+  background-color: #636363;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+.small {
+  font-size: 0.7em;
+}
+
+/* The alert message box */
+.alert {
+  padding: 20px;
+  background-color: #ab3930; /* Red */
+  color: white;
+  margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column;
+  }
+  .row.half {
+    width: 100%;
+  }
 }

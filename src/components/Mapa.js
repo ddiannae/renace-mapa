@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import "leaflet/dist/leaflet.css"
 import "../styles/map.css"
 import markerIconPng from "leaflet/dist/images/marker-icon.png"
@@ -19,7 +19,7 @@ const Mapa = ({ allGrupos }) => {
                     position={[grupo.latitud, grupo.longitud]} 
                     icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})} >
                     <Popup>
-                     <b>{grupo.nombreEncargado}</b> <br /> Easily customizable.
+                     <b>{grupo.nombreEncargado}</b> 
                     </Popup>
                 </Marker>
             ))

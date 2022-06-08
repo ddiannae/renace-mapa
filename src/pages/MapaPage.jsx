@@ -1,7 +1,7 @@
 import React from "react";
 import Mapa from '../components/Mapa';
 
-const HomePage = ({ allGrupos }) => {
+const MapaPage = ({ allGrupos }) => {
   return (
     <>
     <Mapa allGrupos={allGrupos}/>
@@ -9,4 +9,4 @@ const HomePage = ({ allGrupos }) => {
   );
 };
 
-export {HomePage};
+export {MapaPage};

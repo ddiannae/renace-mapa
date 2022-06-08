@@ -35,10 +35,6 @@
   text-decoration: none;
 }
 
-.blog-post-navbar a:hover {
-  color: var(--green-medium-color);
-}
-
 .blog-post-feature {
   display: flex;
   flex-wrap: wrap;
@@ -93,11 +89,23 @@
   color: var(--oxford-color-gray);
 }
 
-.blog-post-btn {
-  border: 0;
-  border-radius: 16px;
-  font-size: 20px;
-  margin-left: 16px;
-  padding: 8px 16px;
-  color: var(--green-medium-color);
+
+.blog-post-brand img {
+  padding: 10px;
+}
+
+.mapa-nav-menu li a {
+  display: block;
+  height: 25px;
+  background: #1B2631;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  line-height: 25px;
+}
+
+.mapa-nav-menu li a:hover{
+  background: #C70039;
 }
